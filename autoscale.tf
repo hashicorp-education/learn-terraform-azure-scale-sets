@@ -12,7 +12,8 @@ resource "azurerm_monitor_autoscale_setting" "autoscale" {
       minimum = 1
       maximum = 10
     }
-    
+
+    /*
     rule {
       metric_trigger {
         metric_name        = "Percentage CPU"
@@ -49,5 +50,6 @@ resource "azurerm_monitor_autoscale_setting" "autoscale" {
         cooldown  = "PT1M"
       }
     }
+    */
   }
 }
