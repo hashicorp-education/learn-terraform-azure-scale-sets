@@ -6,7 +6,6 @@ resource "azurerm_orchestrated_virtual_machine_scale_set" "vmss_terraform_tutori
   instances                   = var.num_instances
   platform_fault_domain_count = 1     # For zonal deployments, this must be set to 1
   zones                       = ["1"] # Zones required to lookup zone in the startup script
-  # tags                        = var.tags
 
   user_data_base64 = base64encode(file("user-data.sh"))
   os_profile {
