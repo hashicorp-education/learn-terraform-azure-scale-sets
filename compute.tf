@@ -9,7 +9,6 @@ resource "azurerm_orchestrated_virtual_machine_scale_set" "vmss_terraform_tutori
 
   user_data_base64 = base64encode(file("user-data.sh"))
   os_profile {
-
     linux_configuration {
       disable_password_authentication = true
       admin_username                  = "azureuser"
