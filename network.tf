@@ -1,3 +1,6 @@
+resource "random_pet" "lb_hostname" {
+}
+
 # Create an virtual network and subnet
 resource "azurerm_virtual_network" "test" {
   name                = "terraformvnet"
@@ -69,7 +72,7 @@ resource "azurerm_public_ip" "example" {
   allocation_method   = "Static"
   sku                 = "Standard"
   zones               = ["1", "2", "3"]
-  domain_name_label   = "${azurerm_resource_group.rg.name}-dns"
+  domain_name_label   = "${azurerm_resource_group.rg.name}-${random_pet.lb_hostname.id}"
 }
 
 # A load balancer with a frontend IP configuration and a backend address pool
@@ -116,7 +119,7 @@ resource "azurerm_lb_nat_rule" "ssh" {
   resource_group_name            = azurerm_resource_group.rg.name
   loadbalancer_id                = azurerm_lb.example.id
   protocol                       = "Tcp"
-  frontend_port_start            = var.nat_rule_frontend_port_start
+  frontend_port_start            = 50000
   frontend_port_end              = 50119
   backend_port                   = 22
   frontend_ip_configuration_name = "myPublicIP"

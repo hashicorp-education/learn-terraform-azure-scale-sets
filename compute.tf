@@ -3,7 +3,7 @@ resource "azurerm_orchestrated_virtual_machine_scale_set" "vmss_terraform_tutori
   resource_group_name         = azurerm_resource_group.rg.name
   location                    = azurerm_resource_group.rg.location
   sku_name                    = "Standard_D2s_v4"
-  instances                   = var.num_instances
+  instances                   = 3
   platform_fault_domain_count = 1     # For zonal deployments, this must be set to 1
   zones                       = ["1"] # Zones required to lookup zone in the startup script
 
